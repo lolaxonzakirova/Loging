@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .o {
+            height: 100vh;
+        }
+
+
+
+        .logo {
+            width: 60px;
+        }
+
+        .nav {
+            margin: 0px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 10px 0px;
+            color: white;
+        }
+
+
+
+        button {
+            width: 200px;
+            padding: 10px;
+            align-items: center;
+            margin: auto;
+            height: 100%;
+            background: rgb(0, 199, 0);
+            border: none;
+            border-radius: 10px;
+        }
+
+        .but {
+            width: 50px;
+            height: 20px;
+            align-items: center;
+            margin: auto;
+            height: 100%;
+            background: rgb(0, 199, 0);
+            border: none;
+            border-radius: 10px;
+        }
+
+        .modal {
+            border: 1px solid black;
+            width: 500px;
+            height: 300px;
+            border-radius: 10px;
+            /* display: none; */
+            box-shadow: 5px 5px 5px;
+            background: rgb(36, 36, 36);
+            color: white;
+            padding: 10px;
+            transition: ease-in-out;
+            margin-top: -1200px;
+
+
+        }
+
+        .aa {
+            display: flex;
+            justify-content: center;
+        }
+
+        input {
+            margin: 10px;
+            padding: 10px 15px;
+            justify-content: center;
+        }
+
+        .a {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .wrapper {
+            position: relative;
+            /* bottom: 500px; */
+        }
+
+        .abs {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="o">
+        <nav>
+            <div class="nav">
+
+                <div class="" style="margin-left: 0%; display: flex;">
+                    <button class="button">Add Emplay</button>
+
+                </div>
+
+
+            </div>
+            <button class=" but" style="display: none;">ok</button>
+        </nav>
+        <div class="wrapper">
+            <div class="aab">
+                <div class="abs">
+                    <h1 style="margin:auto; color:black;">Name</h1>
+                    <h1 style="margin:auto; color:black;">Last name</h1>
+                    <h1 style="margin:auto; color:black;">Gmail</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="aa">
+        <div class="modal">
+            <form action="">
+                <div class="a">
+                    <h1>Input</h1>
+                    <input class="name" type="text" placeholder=" Name"><br>
+                    <input class="age" type="text" placeholder=" Last name"><br>
+                    <input class="hobbi " type="text" placeholder="gmail"><br>
+                    <textarea name="" id="textA" cols="30" rows="10"></textarea>
+                    <button class="addBtn h">AddText</button>
+                </div>
+            </form><br><br><br>
+        </div>
+    </div>
+    <script>
+        let button = document.querySelector('.button');
+        let textA = document.querySelector('#textA');
+        let h = document.querySelector('.h');
+        let nav = document.querySelector('.nav');
+        let o = document.querySelector('.o');
+        let modal = document.querySelector('.modal');
+        let body = document.querySelector('body');
+        let name = document.querySelector('.name');
+        let age = document.querySelector('.age');
+        let hobbi = document.querySelector('.hobbi');
+        let Arapper = document.querySelector('.wrapper');
+        let addBtn = document.querySelector('.addBtn');
+        let abs = document.querySelector('.abs');
+        let arr = [];
+
+        button.onclick = () => {
+            modal.style.display = 'block';
+            modal.style.transition = '2s';
+            modal.style.marginTop = '-500px';
+            h.style.display = 'block';
+            modal.style.zIndex = '5';
+            o.style.opacity = '10%';
+            body.style.zIndex = '1px';
+
+        }
+        h.onclick = () => {
+            modal.style.display = 'none';
+            h.style.display = 'none';
+            modal.style.zIndex = '5';
+            body.style.background = ' none';
+            o.style.opacity = '1000%';
+
+
+        }
+
+
+
+
+
+
+        addBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            if (name.value.trim() === '' || age.value.trim() === '' || hobbi.value.trim() === '' || textA.value.trim() === '') {
+                console.log('xato');
+            } else {
+                let a = { name: name.value, age: age.value, hobbi: hobbi.value, mlumot: textA.value };
+                arr.push(a);
+                console.log(arr);
+                Wrapper();
+                abs.style.display = "block";
+
+            }
+        });
+
+        function Wrapper() {
+            Arapper.innerHTML = ''
+            arr.forEach((item, index) => {
+                Arapper.innerHTML += `
+                <div class="text" style="display:flex;">
+                    <div class="tex" style="display:flex;">
+                        <p style="margin:0px 50px; color:black;">TExt: ${item.mlumot}</ p>
+                        <p style="margin:0px 50px; color:black;">Name: ${item.name}</p>
+                        <p style="margin:0px 50px; color:black;">Last name: ${item.age}</p>
+                        <p style="margin:0px 50px; color:black;">Gmail: ${item.hobbi}@gmail.com</p>
+                        </div>
+<div class="butt"> 
+    <input class="del" type="button" data-index="${index}" value="O'chirish">
+    <input class="tahrir" type="button" data-index="${index}" value="Tahrirlash    ">
+    <input class="del" type="button" data-index="${index}" value="View">
+    </div>
+                </div>
+            `;
+
+
+            });
+            let tahrirButtons = document.querySelectorAll('.tahrir');
+tahrirButtons.forEach((tahrirBtn, index) => {
+    tahrirBtn.onclick = () => {
+        let texDiv = tahrirBtn.closest('.text').querySelector('.tex');
+        let inputsDiv = tahrirBtn.closest('.text').querySelector('.butt');
+
+        texDiv.style.display = "none";
+        inputsDiv.innerHTML = `
+            <input class="del" type="text" data-index="${index}" value="${arr[index].name}">
+            <input class="tahrir-input" type="text" data-index="${index}" value="${arr[index].age}">
+            <input class="del" type="text" data-index="${index}" value="${arr[index].hobbi}">
+            <input class="ok" type="button" data-index="${index}" value="Ok">
+        `;
+
+        let okButtons = inputsDiv.querySelectorAll('.ok');
+        okButtons.forEach(okBtn => {
+            okBtn.addEventListener('click', () => {
+                arr[index].name = inputsDiv.querySelector('.tahrir-input').value;
+                arr[index].age = inputsDiv.querySelector('.tahrir-input')[1].value;
+                arr[index].hobbi = inputsDiv.querySelector('.tahrir-input')[2].value;
+                Wrapper();
+            });
+        });
+    };
+});
+
+            let delet = document.querySelectorAll('.del');
+            delet.forEach((deleteBtn) => {
+                deleteBtn.addEventListener('click', () => {
+                    let index = deleteBtn.getAttribute('data-index');
+                    arr.splice(index, 1);
+                    Wrapper();
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
